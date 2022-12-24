@@ -1,20 +1,9 @@
-const alert = document.querySelector('#alert');
-
 const findBtn = document.querySelector('#find');
 
 const container = document.querySelector('#container');
 
 const input = document.querySelector('#urlField');
 
-// display alerts
-const displayAlert = (txt, dur) => {
-    alert.innerText = txt;
-    alert.className = 'display';
-    setTimeout(() => {
-        alert.innerText = '';
-        alert.className = '';
-    }, dur)
-};
 
 // find data for search
 const findInfo = async e => {
@@ -40,13 +29,12 @@ const findInfo = async e => {
         if (!response.ok) throw new Error('an error occured');
 
         const data = await response.json();
-        console.log(data);
 
         if(data.pageInfo.totalResults > 0) {
             let title = 'cleverly';
-            let subscriberCount = data.items[0].statistics.sunscriberCount;
+            let subscriberCount = data.items[0].statistics.subscriberCount;
             let videoCount = data.items[0].statistics.videoCount;
-            let viewsCount = data.items[0].statistics.viewsCount;
+            let viewsCount = data.items[0].statistics.viewCount;
 
             container.innerHTML = `
                 <div id="title">
@@ -61,12 +49,12 @@ const findInfo = async e => {
 
     			<div id="views">
     				<button>views</button>
-    				<h3>${videoCount}</h3>
+    				<h3>${viewsCount}</h3>
     			</div>
 
     			<div id="videos">
     				<button>total videos</button>
-    				<h3>${viewsCount}</h3>
+    				<h3>${videoCount}</h3>
     			</div>
     		</aside>
         `;
