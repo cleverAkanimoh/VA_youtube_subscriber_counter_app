@@ -8,7 +8,7 @@
 
 @keyframes spinner {
 	to {
-		border-top: 5px solid orangered;
+		border-top: 5px solid rgb(224, 38, 14);
 		border-bottom: 5px solid red;
 		rotate: 360deg;
 	}
