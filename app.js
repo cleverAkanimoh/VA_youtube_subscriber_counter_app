@@ -31,7 +31,9 @@ const findInfo = async e => {
 		<p id="loadtext">finding result...</p>
     `;
     try {
-        const response = await fetch(url);
+        const response = await fetch(url, {
+            header: []
+        });
         if (!response.ok) {
             throw new Error(' error');
         }
