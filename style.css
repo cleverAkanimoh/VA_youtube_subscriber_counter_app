@@ -31,6 +31,10 @@ main {
 	animation: spinner 1.5s infinite;
 }
 
+h1 {
+	color: white;
+}
+
 /* form */
 
 button {
