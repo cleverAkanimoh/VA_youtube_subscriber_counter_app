@@ -7,9 +7,9 @@ const container = document.querySelector('#container');
 const input = document.querySelector('#urlField');
 
 const userID = input.value;
-const API_KEY = 'AIzaSyD7DgWzi2Whte2Wz447C4stmSrKmfE7ZtI';
+const key = 'AIzaSyD7DgWzi2Whte2Wz447C4stmSrKmfE7ZtI';
 
-const url = `https://www.googleapis.com/youtube/v3`;
+const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${userID}&key=${key}`;
 
 // display alerts
 const displayAlert = (txt, dur) => {
@@ -32,38 +32,47 @@ const findInfo = async e => {
     `;
     try {
         const response = await fetch(url, {
-            header: []
+            headers: {
+                Accept: 'application/json',
+                'User-Agent': 'learning app',
+            },
         });
-        if (!response.ok) {
-            throw new Error(' error');
-        }
+        if (!response.ok) throw new Error(' error');
+        
         const data = await response.json();
         console.log(data);
         
-        result.innerHTML = `
-            <div id="title">
-				<h2>${data.title}</h2>
-			</div>
+        if (data.pageIndo.totalResults > 0) {
+            let title = 'cleverly';
+            let subscriberCount = data.items[0].statistics.sunscriberCount;
+            let videoCount = data.items[0].statistics.videoCount;
+            let viewsCount = data.items[0].statistics.viewsCount;
 
-			<aside>
-				<div id="subscribers">
-					<button>subscribers</button>
-					<h3>3124</h3>
-				</div>
+            container.innerHTML = `
+                <div id="title">
+			    	<h2>${title}</h2>
+			    </div>
+
+			    <aside>
+			    	<div id="subscribers">
+			    		<button>subscribers</button>
+			    		<h3>${subscriberCount}</h3>
+			    	</div>
 
 				<div id="views">
 					<button>views</button>
-					<h3>13449</h3>
+					<h3>${videoCount}</h3>
 				</div>
 
 				<div id="videos">
 					<button>total videos</button>
-					<h3>182</h3>
+					<h3>${viewsCount}</h3>
 				</div>
 			</aside>
         `;
+        }
     } catch (error) {
-        container.textContent = `${error}`;
+        container.textContent = `${error} Also ensure you have a good internet connection`;
     };
 };
 
