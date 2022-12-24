@@ -22,29 +22,6 @@ main {
 	font-size: 0.77rem;
 }
 
-#alert {
-	position: absolute;
-	top: 2%;
-	display: grid;
-	place-items: center;
-	text-align: center;
-	font: bold 0.8rem "source Sans Pro", sans-serif;
-	translate: 0 -100%;
-	transition: all 0.4s linear;
-}
-
-.display {
-	background: #fff;
-	color: red;
-	padding: 0.65rem;
-	border-radius: 0.5rem;
-	width: 290px;
-	height: auto;
-	border: 1px solid red;
-	translate: 0 0% !important;
-	z-index: 2;
-}
-
 #loading {
 	width: 100px;
 	height: 100px;
@@ -84,7 +61,7 @@ form {
 	border-radius: 0.3rem;
 	padding: 0 0.5rem;
 	font: 500 italic 0.93rem "source Sans Pro", sans-serif;
-	text-transform: lowercase;
+	text-transform: none;
 	letter-spacing: 1px;
 	color: #0e0607;
 }
