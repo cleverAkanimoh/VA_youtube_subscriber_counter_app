@@ -1,0 +1,201 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: "source Sans Pro", sans-serif;
+	box-sizing: border-box;
+	text-transform: capitalize;
+}
+
+@keyframes spinner {
+	to {
+		border-top: 5px solid orangered;
+		border-bottom: 5px solid red;
+		rotate: 360deg;
+	}
+}
+
+main {
+	display: grid;
+	place-items: center;
+	height: 100vh;
+	background: linear-gradient(45deg, #0e0607, #130205);
+	font-size: 0.77rem;
+}
+
+#alert {
+	position: absolute;
+	top: 2%;
+	display: grid;
+	place-items: center;
+	text-align: center;
+	font: bold 0.8rem "source Sans Pro", sans-serif;
+	translate: 0 -100%;
+	transition: all 0.4s linear;
+}
+
+.display {
+	background: #fff;
+	color: red;
+	padding: 0.65rem;
+	border-radius: 0.5rem;
+	width: 290px;
+	height: auto;
+	border: 1px solid red;
+	translate: 0 0% !important;
+	z-index: 2;
+}
+
+#loading {
+	width: 100px;
+	height: 100px;
+	border: 5px solid transparent;
+	border-top: 5px solid red;
+	border-radius: 50%;
+	animation: spinner 1.5s infinite;
+}
+
+/* form */
+
+button {
+	border: 0;
+	outline: 0;
+	border-radius: 0.3rem;
+	color: white;
+	background: red;
+	width: 120px;
+	height: 35px;
+	font: bold 0.92rem "source Sans Pro", sans-serif;
+	padding: 0 0.5rem;
+	transition: all 0.4s linear;
+}
+
+form {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	translate: 0 80%;
+}
+
+#urlField {
+	width: 180px;
+	height: 35px;
+	outline: 0;
+	border: 1px solid red;
+	border-radius: 0.3rem;
+	padding: 0 0.5rem;
+	font: 500 italic 0.93rem "source Sans Pro", sans-serif;
+	text-transform: lowercase;
+	letter-spacing: 1px;
+	color: #0e0607;
+}
+
+#urlField::placeholder {
+	letter-spacing: 0.5px;
+	opacity: 0.8;
+	color: #0e0607;
+}
+
+#find {
+	width: 100px;
+	font: 500 1rem "georgia";
+	text-transform: lowercase;
+	cursor: pointer;
+	margin-left: 0.5rem;
+}
+
+#find:hover {
+	background: transparent;
+	border: 1px solid red;
+	color: red;
+}
+
+/* container */
+
+#container {
+	padding: 1rem;
+	border-radius: 0.5rem;
+	width: 300px;
+	height: auto;
+	border: 1px solid red;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	color: #fff;
+	grid-gap: 20px;
+}
+
+#container #title {
+	border: 10px solid red;
+	border-radius: 50rem;
+	width: 150px;
+	height: 150px;
+	display: grid;
+	place-items: center;
+}
+
+#container aside {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 20px;
+}
+
+#container aside div {
+	text-align: center;
+}
+
+#container aside div:last-child {
+	grid-column: span 2;
+}
+
+#container aside div h3 {
+	font-size: 1.1rem;
+	padding: 1rem 0 0;
+}
+
+@media screen and (min-width: 500px) {
+	.display,
+	#container {
+		width: 400px;
+	}
+
+	#urlField {
+		width: 300px;
+	}
+
+	button:not(#find) {
+		width: 160px;
+		font-size: 1.1rem;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	#urlField {
+		width: 400px;
+	}
+
+	#container {
+		width: 700px;
+		height: 400px;
+		flex-direction: row;
+	}
+
+	#container #title {
+		border: 15px solid red;
+		width: 200px;
+		height: 200px;
+		font-size: 1.1rem;
+	}
+	#container aside {
+		grid-gap: 50px;
+	}
+
+	#container aside div:last-child {
+		grid-column: 1;
+	}
+
+	#container aside div h3 {
+		font-size: 1.3rem;
+	}
+}
